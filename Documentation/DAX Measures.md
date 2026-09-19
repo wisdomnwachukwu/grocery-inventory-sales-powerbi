@@ -14,7 +14,7 @@ Counts the number of unique products in the dataset.
 
 DISTINCTCOUNT is used instead of COUNT because the analysis is based on unique Product IDs.
 
-## 2. Total Stock
+**2. Total Stock**
 Total Stock =
 SUM('Grocery_Inventory_and_sales_Dataset'[Stock_Quantity])
 Purpose

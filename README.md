@@ -1,108 +1,75 @@
 # Grocery Inventory & Sales Intelligence Dashboard
 
-A Power BI dashboard for analyzing inventory levels, reorder requirements, product sales volume, inventory turnover, and supplier performance.
+A professional Power BI dashboard designed to transform grocery inventory and sales data into actionable business insights for inventory management, product performance, and supplier analysis.
 
-This project demonstrates an end-to-end Power BI workflow covering **data preparation, data-quality validation, DAX calculations, business analysis, and dashboard design**.
-
----
-
-## Dashboard Preview
-
-### Executive Overview
-
-![Executive Overview](Dashboard%20Screenshots/executive-overview.png)
-
-The Executive Overview provides a high-level view of inventory and sales performance, including:
-
-- Total Products
-- Total Stock
-- Estimated Inventory Value
-- Total Sales Volume
-- Products Requiring Reorder
-- Average Inventory Turnover
-- Sales Volume by Category
-- Inventory Value by Category
-- Top 10 Products by Sales
-- Stock Status
+![Power BI Dashboard](Dashboard%20Screenshots/executive-overview.png)
 
 ---
 
-### Inventory Management
+## 📊 Project Overview
 
-![Inventory Management](Dashboard%20Screenshots/inventory-management.png)
+This project explores how Power BI can be used to transform raw inventory and sales data into a practical business intelligence solution.
 
-The Inventory Management page focuses on operational inventory decisions.
+The dashboard focuses on three major areas:
 
-It provides:
+- Executive-level inventory and sales performance
+- Inventory monitoring and reorder management
+- Product, sales, and supplier performance
 
-- Products Requiring Reorder
-- Total Reorder Quantity
-- Out-of-Stock Products
-- Stock Quantity by Category
-- Reorder Quantity by Category
-- Product-level reorder details
-- Reorder Shortfall
-- Supplier information
-- Warehouse/location information
+The project was developed as both a **data analytics portfolio project** and a prototype for the type of reporting solution that could be adapted for small and medium-sized businesses.
 
 ---
 
-### Sales, Product & Supplier Performance
+## 🎯 Business Problem
 
-![Sales, Product & Supplier Performance](Dashboard%20Screenshots/sales-product-supplier.png)
+Businesses that manage physical inventory need clear visibility into:
 
-This page explores relationships between product sales and inventory movement while providing product and supplier-level detail.
+- How much stock they currently hold
+- Which products require replenishment
+- How inventory value is distributed across categories
+- Which products generate the highest sales volume
+- How inventory turnover varies across categories
+- Which suppliers contribute the most sales volume
 
-It includes:
+When this information exists only in raw spreadsheets or CSV files, it can be difficult to identify operational priorities quickly.
 
-- Sales Volume vs Inventory Turnover
-- Average Inventory Turnover by Category
-- Top 10 Suppliers by Sales Volume
-- Product Performance table
-- Category filtering
-
----
-
-# Business Problem
-
-Inventory-heavy businesses need to understand what products they have, what products require replenishment, how sales volume varies across categories, and which products or suppliers require further investigation.
-
-The objective of this project was to transform a raw inventory and sales dataset into an interactive reporting solution that can help answer questions such as:
-
-- How many products are currently being tracked?
-- How much stock is available?
-- Which products require replenishment?
-- How much reorder quantity is associated with products requiring attention?
-- Which product categories contribute the most sales volume?
-- Which products have high sales volume?
-- How does inventory turnover vary across categories?
-- Which suppliers are associated with the highest sales volume?
-- Which individual products require inventory attention?
+This project demonstrates how raw inventory data can be transformed into an interactive dashboard that supports faster analysis and decision-making.
 
 ---
 
-# Project Objectives
+## 🚀 Project Objectives
 
-The project was designed to:
+The main objectives of this project were to:
 
-1. Clean and validate the raw dataset.
-2. Identify data-quality issues before analysis.
-3. Create useful inventory-management classifications.
-4. Build reusable DAX measures.
-5. Analyze product, category, inventory, and supplier performance.
-6. Design an interactive three-page Power BI dashboard.
-7. Communicate business insights through clear visualizations.
-8. Document assumptions and limitations rather than overstating what the dataset can support.
+1. Clean and prepare the raw dataset for analysis.
+2. Validate data quality and identify potential data issues.
+3. Create meaningful DAX measures for business KPIs.
+4. Build an interactive Power BI dashboard.
+5. Identify products requiring inventory replenishment.
+6. Analyze sales volume across product categories.
+7. Analyze inventory value across categories.
+8. Examine product performance.
+9. Analyze supplier sales performance.
+10. Present the results using a professional business-dashboard design.
 
 ---
 
-# Dataset
+## 🗂️ Dataset
 
-The project uses the **Grocery Inventory and Sales Dataset** from Kaggle.
+### Source
 
-**Source:** [Grocery Inventory and Sales Dataset](https://www.kaggle.com/datasets/salahuddinahmedshuvo/grocery-inventory-and-sales-dataset)
+The dataset used in this project is the **Grocery Inventory and Sales Dataset** from Kaggle.
 
-The dataset contains **990 product-level records** and includes fields such as:
+Source:
+
+https://www.kaggle.com/datasets/salahuddinahmedshuvo/grocery-inventory-and-sales-dataset
+
+### Dataset Size
+
+- **990 product records**
+- **16 columns**
+
+### Main Fields
 
 | Field | Description |
 |---|---|
@@ -112,121 +79,110 @@ The dataset contains **990 product-level records** and includes fields such as:
 | Supplier_ID | Supplier identifier |
 | Supplier_Name | Supplier name |
 | Stock_Quantity | Current stock quantity |
-| Reorder_Level | Inventory threshold for replenishment |
-| Reorder_Quantity | Quantity associated with the source reorder information |
-| Unit_Price | Unit price supplied by the dataset |
+| Reorder_Level | Stock threshold for replenishment |
+| Reorder_Quantity | Recommended reorder quantity |
+| Unit_Price | Unit price provided in the dataset |
 | Date_Received | Date the product was received |
-| Last_Order_Date | Last order date |
+| Last_Order_Date | Most recent order date |
 | Expiration_Date | Product expiration date |
-| Warehouse_Location | Location/address information |
-| Sales_Volume | Aggregate product-level sales volume |
-| Inventory_Turnover_Rate | Inventory turnover rate supplied by the dataset |
-| Status | Source status field |
+| Warehouse_Location | Location/address field provided in the dataset |
+| Sales_Volume | Sales volume associated with the product |
+| Inventory_Turnover_Rate | Inventory turnover rate provided by the dataset |
+| Status | Product status |
 
 ---
 
-# Data Preparation
+# 🔄 Data Preparation
 
-The raw CSV file was prepared using **Power Query** before being loaded into the Power BI model.
+Data preparation was performed using **Power Query in Power BI**.
 
-## Data Quality Checks
+The cleaning process included the following steps.
 
-The following checks were performed:
+### 1. Data Type Validation
 
-- Verified column names and data types.
-- Checked for missing values.
-- Checked for duplicate Product IDs.
-- Standardized inconsistent category values.
-- Validated numeric columns.
-- Validated date columns.
-- Reviewed inventory-related business rules.
-- Created a stock-status classification.
-- Removed temporary diagnostic steps after validation.
+Column data types were reviewed and assigned appropriately.
 
-## Data Type Validation
+Examples:
 
-Fields were assigned appropriate data types, including:
+- IDs → Text
+- Product names → Text
+- Categories → Text
+- Quantities → Whole Number
+- Unit Price → Decimal Number
+- Dates → Date
+- Inventory Turnover Rate → Decimal Number
 
-- Text
-- Whole number
-- Decimal number
-- Date
+### 2. Column Standardization
 
-Correct data types were important for reliable calculations and visualizations.
+The original dataset contained a column named:
 
-## Missing Category Value
+`Catagory`
 
-The original dataset contained a small number of blank category values.
+This was corrected to:
 
-The missing category for the affected product was classified as:
+`Category`
 
-`Fruits & Vegetables`
+### 3. Missing-Value Investigation
 
-This ensured that category-based analysis was complete.
+The Category column initially contained a missing value.
 
-## Category Standardization
+The affected record was reviewed and the missing category was assigned based on the product information.
 
-During visual analysis, duplicate-looking category labels were identified.
+### 4. Category Standardization
 
-Further inspection showed that the labels contained inconsistent text values.
+Category values were checked for inconsistent text formatting that caused visually duplicated categories.
 
-The category values were standardized so that equivalent categories were represented consistently as:
+The values were standardized so that equivalent categories were represented consistently.
 
-`Fruits & Vegetables`
+### 5. Duplicate Checking
 
-This prevented the same business category from appearing as separate categories in dashboard visuals.
+Product IDs were checked for duplicate records.
 
-## Duplicate Product Check
+No duplicate Product_ID records were retained in the final dataset.
 
-Product IDs were checked for duplicates to validate the product-level structure of the dataset.
+### 6. Business-Rule Column
 
-No duplicate Product IDs were retained as part of the final analytical data.
+A conditional column called `Stock Status` was created.
 
----
+The logic was:
 
-# Business Rules
+- If Stock Quantity <= Reorder Level → `Reorder Needed`
+- Otherwise → `Stock OK`
 
-A calculated `Stock Status` classification was created using the current stock quantity and reorder level.
+This allowed inventory risk to be analyzed directly in the dashboard.
 
-```Power Query
-if [Stock_Quantity] <= [Reorder_Level]
-then "Reorder Needed"
-else "Stock OK"
-```
+### 7. Reorder Shortfall
 
-The resulting classifications are:
+A calculated column called `Reorder Shortfall` was created to show the difference between the reorder level and current stock.
 
-| Status | Definition |
-|---|---|
-| Stock OK | Current stock is above the reorder level |
-| Reorder Needed | Current stock is at or below the reorder level |
-| Out of Stock | Current stock quantity is zero |
-
-These statuses are intentionally treated as separate concepts.
-
-A product can require replenishment without being completely out of stock.
+This helps identify products with larger inventory gaps.
 
 ---
 
-# Data Model
+# 🧮 Data Model
 
 This version of the project uses a **single-table analytical model**.
 
-The source dataset is suitable for the project's current inventory-focused analysis, so a more complex relational model was not introduced unnecessarily.
+The dataset is primarily product-level inventory data rather than a transaction-level sales database.
 
-The dataset's effective analytical grain is **product-level inventory records**, rather than individual sales transactions.
+This distinction is important because the `Sales_Volume` field represents an aggregate sales-volume value associated with each product rather than individual sales transactions.
 
-This distinction is important because the dataset contains an aggregate `Sales_Volume` field rather than a detailed transaction table.
+For a production business intelligence system, the model could later be expanded into a proper star schema containing:
+
+- Fact Sales
+- Dimension Product
+- Dimension Customer
+- Dimension Supplier
+- Dimension Date
+- Dimension Store/Warehouse
 
 ---
 
-# DAX
+# 📐 DAX Measures
 
 Several DAX measures were created to support the dashboard.
 
-## Key Measures
-
-### Total Products
+## Total Products
 
 ```DAX
 Total Products =
@@ -235,11 +191,11 @@ DISTINCTCOUNT(
 )
 ```
 
-Counts unique products.
+Counts the number of unique products in the dataset.
 
 ---
 
-### Total Stock
+## Total Stock
 
 ```DAX
 Total Stock =
@@ -248,11 +204,11 @@ SUM(
 )
 ```
 
-Calculates the total stock quantity.
+Calculates the total quantity of products currently in stock.
 
 ---
 
-### Inventory Value
+## Inventory Value
 
 ```DAX
 Inventory Value =
@@ -263,13 +219,13 @@ SUMX(
 )
 ```
 
-Calculates an estimated inventory value by multiplying stock quantity by unit price for each product and summing the results.
+Calculates an estimated inventory value by multiplying each product's stock quantity by its unit price and then summing the results.
 
-`SUMX` was used because the calculation requires row-by-row multiplication before aggregation.
+> **Note:** The dataset does not clearly establish whether `Unit_Price` represents acquisition cost or selling price, so this metric is presented as an estimated inventory value rather than a confirmed accounting valuation.
 
 ---
 
-### Total Sales Volume
+## Total Sales Volume
 
 ```DAX
 Total Sales Volume =
@@ -278,11 +234,11 @@ SUM(
 )
 ```
 
-Calculates aggregate sales volume.
+Calculates the total sales volume represented in the dataset.
 
 ---
 
-### Products to Reorder
+## Products to Reorder
 
 ```DAX
 Products to Reorder =
@@ -290,17 +246,18 @@ CALCULATE(
     DISTINCTCOUNT(
         'Grocery_Inventory_and_sales_Dataset'[Product_ID]
     ),
-    'Grocery_Inventory_and_sales_Dataset'[Stock Status] = "Reorder Needed"
+    'Grocery_Inventory_and_sales_Dataset'[Stock Status]
+        = "Reorder Needed"
 )
 ```
 
-Counts unique products whose stock is at or below the reorder level.
+Counts the number of unique products whose stock quantity is at or below the defined reorder level.
 
-This measure demonstrates the use of `CALCULATE` to modify filter context.
+`CALCULATE()` changes the filter context so that only products marked as `Reorder Needed` are included.
 
 ---
 
-### Average Inventory Turnover
+## Average Inventory Turnover
 
 ```DAX
 Average Inventory Turnover =
@@ -309,11 +266,13 @@ AVERAGE(
 )
 ```
 
-Calculates the average inventory turnover rate supplied by the dataset.
+Calculates the average inventory turnover rate provided in the source dataset.
+
+The dashboard does not assign a specific time-based unit such as "times per year" because that information was not established by the source dataset.
 
 ---
 
-### Total Suppliers
+## Total Suppliers
 
 ```DAX
 Total Suppliers =
@@ -322,322 +281,301 @@ DISTINCTCOUNT(
 )
 ```
 
-Counts unique supplier names.
-
-The supplier name was used rather than `Supplier_ID` because the source IDs are unique at the product-record level and therefore do not represent a clean supplier-level identifier in this dataset.
+Counts the distinct supplier names represented in the dataset.
 
 ---
 
-### Reorder Shortfall
+## Reorder Shortfall
 
 ```DAX
 Reorder Shortfall =
-'Reorder_Level'
-    - 'Stock_Quantity'
+'Grocery_Inventory_and_sales_Dataset'[Reorder_Level]
+    - 'Grocery_Inventory_and_sales_Dataset'[Stock_Quantity]
 ```
 
-Calculates the difference between the reorder level and current stock quantity.
+Shows the difference between the reorder threshold and the current stock quantity.
 
-This metric helps identify products with a larger gap below their reorder threshold.
+A larger positive shortfall indicates a larger gap relative to the reorder level.
 
 ---
 
-# Dashboard Structure
+# 📊 Dashboard Structure
 
 The dashboard contains three pages.
 
+---
+
 ## 1. Executive Overview
 
-Designed for high-level monitoring.
+![Executive Overview](Dashboard%20Screenshots/executive-overview.png)
 
-### Key questions
+The Executive Overview provides a high-level summary of inventory and sales performance.
 
-- What is the overall inventory position?
-- How much stock is available?
-- What is the estimated inventory value?
-- How much sales volume is recorded?
-- How many products require reorder?
-- How does turnover vary overall?
-- Which categories contribute the most sales volume?
-- What proportion of products require reorder?
+### Key KPIs
+
+- Total Products
+- Total Stock
+- Inventory Value
+- Total Sales Volume
+- Products to Reorder
+- Average Inventory Turnover
+
+### Main Visuals
+
+- Sales Volume by Category
+- Inventory Value by Category
+- Top 10 Products by Sales
+- Stock Status
+
+### Purpose
+
+This page provides a quick management-level view of the overall inventory position and sales performance.
 
 ---
 
 ## 2. Inventory Management
 
-Designed for operational inventory analysis.
+![Inventory Management](Dashboard%20Screenshots/inventory-management.png)
 
-### Key questions
+The Inventory Management page focuses on stock monitoring and replenishment.
 
-- How many products require replenishment?
-- How much reorder quantity is represented?
-- Are any products completely out of stock?
-- Which categories contain the largest stock quantities?
-- Which categories have the largest reorder quantities?
-- Which individual products require attention?
-- How large is each product's reorder shortfall?
+### Key KPIs
+
+- Products to Reorder
+- Total Reorder Quantity
+- Out-of-Stock Products
+
+### Main Visuals
+
+- Stock Quantity by Category
+- Reorder Quantity by Category
+- Products Requiring Reorder
+
+### Operational Table
+
+The reorder table provides product-level detail including:
+
+- Product Name
+- Category
+- Stock Quantity
+- Reorder Level
+- Reorder Shortfall
+- Reorder Quantity
+- Supplier Name
+- Warehouse Location
+
+### Purpose
+
+This page is designed to help identify products that require attention and provide more detailed information for inventory replenishment decisions.
 
 ---
 
 ## 3. Sales, Product & Supplier Performance
 
-Designed for deeper product and supplier analysis.
+![Sales Product Supplier Performance](Dashboard%20Screenshots/sales-product-supplier.png)
 
-### Key questions
+This page examines relationships between product sales, inventory turnover, and supplier performance.
 
-- How are sales volume and inventory turnover related?
-- How does average turnover vary by category?
-- Which products have high sales volume?
-- Which suppliers are associated with higher sales volume?
-- What are the inventory characteristics of individual products?
+### Key KPI
 
----
+- Total Suppliers
 
-# Key Results
+### Main Visuals
 
-The dashboard provides several high-level observations from the dataset:
+- Top 10 Suppliers by Sales Volume
+- Average Inventory Turnover by Category
+- Sales Volume vs Inventory Turnover
+- Product Performance Table
 
-- **990 products** are represented in the dataset.
-- **465 products** are classified as requiring reorder based on the defined stock-status rule.
-- Approximately **47% of products** therefore fall at or below their reorder level.
-- The dashboard records approximately **58K total sales volume**.
-- The estimated inventory value based on stock quantity × supplied unit price is approximately **$332.65K**.
-- The average supplied inventory turnover rate is approximately **50.15**.
-- The dataset contains **350 distinct supplier names**.
-- The dashboard identifies **0 products with zero stock quantity** at the time represented by the dataset.
+### Product Performance
 
-These observations describe the dataset and should not be interpreted as current real-world business conditions.
+The product-level analysis includes:
 
----
+- Product Name
+- Category
+- Sales Volume
+- Inventory Turnover Rate
+- Stock Quantity
+- Unit Price
 
-# Dashboard Design Approach
+### Purpose
 
-The dashboard was designed around a simple reporting hierarchy:
-
-**Executive Overview → Inventory Management → Sales & Performance**
-
-The design uses:
-
-- Light neutral dashboard backgrounds
-- White visual cards
-- Dark navy typography
-- Blue as the primary analytical accent
-- Green for positive/healthy inventory status
-- Amber/orange for reorder warnings
-- Red for critical inventory indicators
-- Consistent spacing and alignment
-- Focused visuals rather than unnecessary decoration
-
-Visuals were selected according to the business question rather than simply for appearance.
-
-Examples:
-
-- **Cards** for important KPIs
-- **Bar charts** for category and supplier comparisons
-- **Donut chart** for stock-status composition
-- **Scatter plot** for the relationship between sales volume and inventory turnover
-- **Tables** for detailed operational investigation
+This page provides a deeper analytical view of product and supplier performance.
 
 ---
 
-# Data Limitations
+# 🔎 Key Business Insights
 
-Several limitations of the source dataset should be considered when interpreting the dashboard.
+The dashboard highlights several notable observations from the dataset.
 
-## 1. Product-level rather than transaction-level sales
+### 1. A significant portion of products require replenishment
 
-The dataset contains `Sales_Volume`, but it does not provide a detailed sales transaction table.
+The dashboard identifies:
 
-Therefore, this project does not attempt to calculate:
+**465 products requiring reorder out of 990 products.**
 
-- Daily sales
-- Monthly sales trends
-- Year-over-year sales growth
-- Customer-level sales
-- Transaction-level revenue
-- Transaction-level profit
+This represents approximately **47% of the products** in the dataset.
 
-A future transactional dataset would be required for these analyses.
+This indicates that inventory replenishment is an important area for further investigation.
 
-## 2. Inventory Value Interpretation
+---
 
-The dashboard calculates:
+### 2. Fruits & Vegetables has the highest sales volume
+
+Among the categories shown in the dashboard, **Fruits & Vegetables** records the highest sales volume.
+
+This provides a starting point for investigating demand patterns and inventory requirements within the category.
+
+---
+
+### 3. Inventory value differs substantially across categories
+
+The Inventory Value by Category visual shows that inventory value is not distributed evenly across product categories.
+
+This can help management identify categories that represent a larger portion of inventory investment.
+
+---
+
+### 4. Product sales performance varies considerably
+
+The Top 10 Products by Sales visual shows significant differences in sales volume between products.
+
+This provides an opportunity to investigate:
+
+- High-demand products
+- Low-demand products
+- Stock availability
+- Reorder requirements
+- Inventory turnover
+
+---
+
+### 5. Supplier sales contribution varies
+
+The Top 10 Suppliers by Sales Volume visual shows that suppliers contribute different levels of sales volume across the dataset.
+
+This can be used as a starting point for deeper supplier analysis.
+
+---
+
+# ⚠️ Data Limitations
+
+This project is intended for portfolio and analytical demonstration purposes. Several limitations should be considered.
+
+### 1. Static Dataset
+
+The dataset is a static Kaggle dataset rather than a live business database.
+
+Therefore, the dashboard does not represent real-time inventory conditions.
+
+### 2. Product-Level Sales Data
+
+`Sales_Volume` is an aggregate product-level field.
+
+The dataset does not provide individual sales transactions with:
+
+- Transaction ID
+- Transaction date
+- Customer
+- Quantity sold per transaction
+- Revenue per transaction
+
+Therefore, this project does not attempt to perform detailed transaction-level time-series analysis.
+
+### 3. Inventory Turnover
+
+The `Inventory_Turnover_Rate` field is supplied by the dataset.
+
+It is analyzed as provided rather than independently recalculated from transaction-level cost of goods sold and average inventory.
+
+### 4. Inventory Value Interpretation
+
+Inventory Value is calculated using:
 
 `Stock Quantity × Unit Price`
 
-The dataset does not clearly establish whether `Unit_Price` represents purchase cost, selling price, or another pricing basis.
+However, the source dataset does not clearly define whether Unit Price represents purchase cost or selling price.
 
-Therefore, the dashboard refers to this as an **estimated inventory value based on the supplied unit price**.
+Therefore, the metric should be treated as an estimated inventory value.
 
-## 3. Inventory Turnover
+### 5. Warehouse Location
 
-The source dataset already provides `Inventory_Turnover_Rate`.
+The `Warehouse_Location` field contains location/address-like values.
 
-The project analyzes this supplied metric rather than independently calculating turnover from cost of goods sold and average inventory.
+It was therefore treated as location detail rather than being interpreted as a verified list of warehouse facilities.
 
-## 4. Supplier Analysis
+### 6. Supplier Reliability
 
-Supplier analysis is limited to information available in the dataset, such as:
+The dataset does not contain sufficient information to calculate supplier reliability.
 
-- Supplier name
-- Product association
-- Sales volume
+For example, it does not provide reliable supplier:
 
-The dataset does not provide sufficient information to evaluate:
+- Delivery lead time
+- On-time delivery rate
+- Fulfillment rate
+- Order delay history
 
-- Supplier delivery reliability
-- Lead time
-- Fill rate
-- Late deliveries
-- Supplier quality
-- Procurement cost performance
-
-Therefore, the dashboard does not make supplier reliability claims.
-
-## 5. Warehouse Location
-
-`Warehouse_Location` contains location/address-style information.
-
-The project uses this field as operational detail rather than treating it as a validated warehouse dimension or performing warehouse-performance analysis.
+Therefore, supplier analysis in this project focuses on measurable fields such as sales volume and product information rather than unsupported reliability scores.
 
 ---
 
-# Tools Used
+# 🛠️ Tools & Technologies
 
 - **Microsoft Power BI**
 - **Power Query**
 - **DAX**
 - **Git**
 - **GitHub**
+- **AI-assisted analytical review**
 
-AI-assisted review was also used during the project development process as a secondary perspective for:
+---
 
-- Dashboard UX review
+# 🤖 AI-Assisted Learning
+
+AI was used as a learning and review tool rather than as a replacement for the analytical process.
+
+The workflow involved:
+
+1. Building and cleaning the dashboard.
+2. Creating the DAX measures.
+3. Designing the visuals.
+4. Reviewing the dashboard with AI.
+5. Evaluating suggested improvements.
+6. Implementing relevant improvements manually.
+7. Validating the final dashboard.
+
+This approach helped explore areas such as:
+
+- Dashboard usability
+- Visual hierarchy
+- KPI presentation
+- Business-question framing
 - Data-quality considerations
-- Visualization choices
-- DAX reasoning
+- DAX documentation
 - Portfolio presentation
 
-The dashboard logic and final decisions were reviewed rather than blindly generated by AI.
+The goal was to use AI to improve analytical thinking and review quality rather than blindly accepting generated solutions.
 
 ---
 
-# Skills Demonstrated
+# 🎨 Dashboard Design
 
-### Data Preparation
+The dashboard was designed around a clean business intelligence style using:
 
-- Data profiling
-- Data-type validation
-- Missing-value handling
-- Duplicate checking
-- Text standardization
-- Conditional columns
-- Business-rule validation
+- Light neutral backgrounds
+- White visual/card areas
+- Dark navy typography
+- Blue analytical visuals
+- Green indicators for positive stock status
+- Amber/orange indicators for inventory warnings
+- Consistent spacing and alignment
+- Clear visual hierarchy
 
-### Power BI
-
-- Dashboard design
-- Interactive filtering
-- KPI cards
-- Bar charts
-- Donut charts
-- Scatter plots
-- Tables
-- Conditional formatting
-- Visual-level filtering
-- Report layout and formatting
-
-### DAX
-
-- `SUM`
-- `AVERAGE`
-- `DISTINCTCOUNT`
-- `SUMX`
-- `CALCULATE`
-- Filter context
-- Calculated columns
-- Conditional logic
-
-### Business Analysis
-
-- Inventory monitoring
-- Reorder analysis
-- Product performance
-- Category comparison
-- Supplier analysis
-- Operational reporting
-- Data limitation assessment
+The design prioritizes readability and business interpretation over decorative elements.
 
 ---
 
-# Future Improvements
-
-A production-oriented version of this solution could be extended beyond the current Power BI prototype.
-
-Potential improvements include:
-
-### Data Engineering
-
-- Store source data in SQL Server
-- Build staging and transformation layers
-- Implement ETL/ELT pipelines
-- Introduce automated data-quality checks
-- Use incremental data loading
-- Automate data refresh
-
-### Data Modeling
-
-Move from the current single-table model toward a dimensional model containing tables such as:
-
-- Fact Sales
-- Fact Inventory
-- Dim Product
-- Dim Supplier
-- Dim Customer
-- Dim Date
-- Dim Store/Warehouse
-
-### Advanced Analytics
-
-Future versions could include:
-
-- Sales trends over time
-- Year-over-year analysis
-- Profit and margin analysis
-- Days of inventory remaining
-- Reorder forecasting
-- Demand forecasting
-- Supplier lead-time analysis
-- Product profitability
-- Customer segmentation
-
-### Engineering Stack
-
-A more advanced implementation could use:
-
-```text
-Source Data
-    ↓
-Python / APIs
-    ↓
-SQL Server
-    ↓
-ETL / ELT
-    ↓
-Data Warehouse
-    ↓
-dbt / Spark
-    ↓
-Power BI
-    ↓
-Automated Business Reporting
-```
-
-This would transform the project from a Power BI reporting prototype into a broader data-engineering pipeline.
-
----
-
-# Repository Structure
+# 📁 Repository Structure
 
 ```text
 grocery-inventory-sales-powerbi/
@@ -649,27 +587,128 @@ grocery-inventory-sales-powerbi/
 │   ├── inventory-management.png
 │   └── sales-product-supplier.png
 │
-├── Power BI/
-│   └── Grocery Inventory & Sales Dashboard.pbix
+├── Documentation/
+│   └── DAX Measures.md
 │
-└── Documentation/
-    └── DAX Measures.md
+└── Power BI/
+    └── Grocery Inventory & Sales Dashboard.pbix
 ```
 
 ---
 
-# Project Takeaway
+# 🔮 Future Improvements
 
-This project was built to practice the complete analytical workflow rather than only dashboard visualization:
+This project can be extended into a more complete business intelligence and data engineering solution.
 
-**Understand the data → Clean the data → Validate the data → Define business rules → Create DAX measures → Analyze → Visualize → Communicate insights → Document limitations**
+Potential improvements include:
 
-The next stage of development is to move from static product-level inventory analysis toward **transactional data, dimensional modeling, SQL, Python, ETL/ELT pipelines, and automated reporting**.
+### Data Engineering
+
+- SQL Server as the backend database
+- Python-based data ingestion
+- Automated ETL/ELT pipelines
+- Data-quality validation
+- Incremental data loading
+- Scheduled refreshes
+
+### Data Modeling
+
+- Star schema
+- Fact Sales table
+- Product dimension
+- Customer dimension
+- Supplier dimension
+- Date dimension
+- Warehouse/Store dimension
+
+### Analytics
+
+- Revenue analysis
+- Gross profit
+- Profit margin
+- Year-over-Year growth
+- Month-over-Month growth
+- Year-to-Date analysis
+- Customer segmentation
+- Product profitability
+- Inventory aging
+- Reorder forecasting
+- Supplier lead-time analysis
+
+### Automation
+
+A future production version could follow a pipeline such as:
+
+```text
+Source Data
+     ↓
+Python / API / Files
+     ↓
+Data Validation
+     ↓
+SQL Server / Data Warehouse
+     ↓
+Transformation
+     ↓
+Power BI
+     ↓
+Automated Reporting
+```
+
+The project could eventually be expanded into an automated inventory intelligence system for small and medium-sized businesses.
 
 ---
 
-## Author
+# 📚 What I Learned
+
+This project strengthened my practical understanding of:
+
+- Power Query data cleaning
+- Data-quality validation
+- Missing-value handling
+- Duplicate checking
+- Text standardization
+- Conditional columns
+- DAX measures
+- `SUMX()`
+- `DISTINCTCOUNT()`
+- `CALCULATE()`
+- Filter context
+- Calculated columns
+- KPI design
+- Visual selection
+- Dashboard layout
+- Business insight generation
+- Data limitations
+- Git and GitHub portfolio management
+
+Most importantly, the project reinforced the idea that a good dashboard is not simply a collection of charts.
+
+It should connect:
+
+**Data → Analysis → Business Questions → Insights → Action**
+
+---
+
+# 👤 Author
 
 **Wisdom Nwachukwu**
 
-Aspiring Data Engineer | Power BI | SQL | Python | Data Analytics
+Agricultural & Bio-resource Engineering graduate transitioning into **Data Engineering and Business Intelligence**.
+
+Interested in:
+
+- Data Engineering
+- Business Intelligence
+- SQL
+- Python
+- Power BI
+- Data Pipelines
+- Cloud Data Platforms
+- AI & Data Applications
+
+---
+
+## ⭐ Project
+
+If you find this project useful, feel free to explore the repository and review the dashboard, DAX documentation, and data preparation process.
